@@ -1,11 +1,11 @@
 {
   "interval": 1000,
   "api": {
-    "authToken": "insert_here"
+    "authToken": "INSERT_HERE"
   },
   "devices": [
     {
-      "title": "Switch",
+      "title": "Switch1",
       "deviceid": "XXXXXXXXXXXX",
       "mappings": [
         {
@@ -27,6 +27,22 @@
           "value": 20,
           "status": "finishing",
           "tolerance": 3
+        }
+      ]
+    },
+    {
+      "title": "Switch2",
+      "deviceid": "XXXXXXXXXXXX",
+      "mappings": [
+        {
+          "value": 0,
+          "status": "off",
+          "tolerance": 0
+        },
+        {
+          "value": 13,
+          "status": "on",
+          "tolerance": 5
         }
       ]
     }
