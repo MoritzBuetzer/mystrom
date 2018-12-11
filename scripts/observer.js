@@ -1,38 +1,12 @@
 const request = require('request');
 const events = require('events');
+const config = require('config');
 
 var api_url = 'https://mystrom.ch/mobile/device';
-var auth_token = 'INSERT_HERE';
-var interval = 1000;
-var lastStatus = '';
 var eventEmitter = new events.EventEmitter();
+var lastStatus = '';
 
-var device = {
-  "title": "Switch",
-  "deviceid": "XXXXXXXXXXXX",
-  "mappings": [
-    {
-      "value": 0,
-      "status": "standby",
-      "tolerance": 0
-    },
-    {
-      "value": 84,
-      "status": "pump",
-      "tolerance": 5
-    },
-    {
-      "value": 2260,
-      "status": "heating",
-      "tolerance": 100
-    },
-    {
-      "value": 20,
-      "status": "finishing",
-      "tolerance": 3
-    }
-  ]
-}
+var device = config.get('devices')[0];
 
 eventEmitter.on('newStatus', function(status, device) {
   console.log(new Date().toString() +' ['+device.title+']: '+status);
@@ -42,7 +16,7 @@ const intervalObj = setInterval(() => {
   request(api_url, { 
     json: true,
     qs: {
-      'authToken': auth_token,
+      'authToken': config.get('api.authToken'),
       'id': device.deviceid
     }
   }, (err, res, body) => {
@@ -54,4 +28,4 @@ const intervalObj = setInterval(() => {
       }
     })
   });
-}, interval);
+}, config.get('interval'));

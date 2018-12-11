@@ -8,6 +8,7 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
+    "config": "^3.0.0",
     "object-observer": "^1.1.5",
     "request": "^2.88.0"
   }

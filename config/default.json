@@ -1,0 +1,34 @@
+{
+  "interval": 1000,
+  "api": {
+    "authToken": "insert_here"
+  },
+  "devices": [
+    {
+      "title": "Switch",
+      "deviceid": "XXXXXXXXXXXX",
+      "mappings": [
+        {
+          "value": 0,
+          "status": "standby",
+          "tolerance": 0
+        },
+        {
+          "value": 84,
+          "status": "pump",
+          "tolerance": 5
+        },
+        {
+          "value": 2260,
+          "status": "heating",
+          "tolerance": 100
+        },
+        {
+          "value": 20,
+          "status": "finishing",
+          "tolerance": 3
+        }
+      ]
+    }
+  ] 
+}
