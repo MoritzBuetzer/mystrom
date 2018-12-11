@@ -3,12 +3,25 @@ const events = require('events')
 const config = require('config')
 
 var api_url = 'https://mystrom.ch/mobile/device'
+var ifttt_url = 'https://maker.ifttt.com/trigger/mystrom/with/key/'+config.get('ifttt.apiKey')
 var eventEmitter = new events.EventEmitter()
 
 var devices = config.get('devices');
 
 eventEmitter.on('newStatus', function(status, device, mapping) {
   console.log(new Date().toString() +' ['+device.name+']: '+status+' @ '+device.energyReport.power+'W');
+
+  request(ifttt_url, { 
+    json: true,
+    qs: {
+      'value1': device.name,
+      'value2': status,
+      'value3': device.energyReport.power.toFixed(0)
+    }
+  }, (err, res, body) => {
+    if (err) { return console.log(err); }
+  });
+
 });
 
 devices.forEach(function(device){
@@ -22,7 +35,7 @@ function createInterval(device)
     request(api_url, { 
       json: true,
       qs: {
-        'authToken': config.get('api.authToken'),
+        'authToken': config.get('mystrom.authToken'),
         'id': device.deviceid
       }
     }, (err, res, body) => {

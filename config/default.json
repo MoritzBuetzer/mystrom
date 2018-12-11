@@ -1,7 +1,10 @@
 {
   "interval": 1000,
-  "api": {
+  "mystrom": {
     "authToken": "INSERT_HERE"
+  },
+  "ifttt": {
+    "apiKey": "INSERT_HERE"
   },
   "devices": [
     {
