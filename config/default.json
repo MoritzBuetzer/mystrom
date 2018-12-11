@@ -5,7 +5,6 @@
   },
   "devices": [
     {
-      "title": "Switch1",
       "deviceid": "XXXXXXXXXXXX",
       "mappings": [
         {
@@ -31,7 +30,6 @@
       ]
     },
     {
-      "title": "Switch2",
       "deviceid": "XXXXXXXXXXXX",
       "mappings": [
         {

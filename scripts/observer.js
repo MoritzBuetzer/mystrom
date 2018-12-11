@@ -7,8 +7,8 @@ var eventEmitter = new events.EventEmitter()
 
 var devices = config.get('devices');
 
-eventEmitter.on('newStatus', function(status, device) {
-  console.log(new Date().toString() +' ['+device.title+']: '+status);
+eventEmitter.on('newStatus', function(status, device, mapping) {
+  console.log(new Date().toString() +' ['+device.name+']: '+status+' @ '+device.energyReport.power+'W');
 });
 
 devices.forEach(function(device){
@@ -29,7 +29,7 @@ function createInterval(device)
       if (err) { return console.log(err); }
       device.mappings.forEach(function(mapping) {
         if( (Math.abs(body.device.energyReport.power - mapping.value) <= mapping.tolerance) && (lastStatus != mapping.status) ) {
-          eventEmitter.emit('newStatus', mapping.status, device)
+          eventEmitter.emit('newStatus', mapping.status, body.device, device)
           lastStatus = mapping.status
         }
       })
