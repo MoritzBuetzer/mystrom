@@ -1,0 +1,14 @@
+{
+  "name": "mystrom",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "observe": "node scripts/observer.js"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "object-observer": "^1.1.5",
+    "request": "^2.88.0"
+  }
+}
