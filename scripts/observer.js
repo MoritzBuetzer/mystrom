@@ -41,9 +41,11 @@ function createInterval(device)
     }, (err, res, body) => {
       if (err) { return console.log(err); }
       device.mappings.forEach(function(mapping) {
-        if( (Math.abs(body.device.energyReport.power - mapping.value) <= mapping.tolerance) && (lastStatus != mapping.status) ) {
-          eventEmitter.emit('newStatus', mapping.status, body.device, device)
-          lastStatus = mapping.status
+        if(body.device) {
+          if( (Math.abs(body.device.energyReport.power - mapping.value) <= mapping.tolerance) && (lastStatus != mapping.status) ) {
+            eventEmitter.emit('newStatus', mapping.status, body.device, device)
+            lastStatus = mapping.status
+          }
         }
       })
     });
