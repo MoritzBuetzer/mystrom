@@ -1,7 +1,7 @@
 {
   "name": "mystrom",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple script to observe MyStrom-Switches",
   "scripts": {
     "observe": "node scripts/observer.js"
   },
