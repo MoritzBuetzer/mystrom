@@ -1,5 +1,6 @@
 # MyStrom Observer
 Simple script to observe MyStrom-Switches.
+Not yet finished, more a PoC to test the Switches.
 
 ## Start forever
 `forever start scripts/observer.js`
